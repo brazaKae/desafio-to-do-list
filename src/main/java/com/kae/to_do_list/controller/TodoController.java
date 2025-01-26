@@ -3,8 +3,7 @@ package com.kae.to_do_list.controller;
 import com.kae.to_do_list.entity.Todo;
 import com.kae.to_do_list.repository.TodoRepository;
 import com.kae.to_do_list.service.TodoService;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -16,17 +15,23 @@ public class TodoController {
     public TodoController(TodoService todoService){
         this.todoService = todoService;
     }
-
-    List<Todo> create(Todo todo){
+    @PostMapping
+    public List<Todo> create(@RequestBody Todo todo){
         return todoService.create(todo);
     }
-    List<Todo> list(){
+
+    @GetMapping
+    public List<Todo> list(){
         return todoService.list();
     }
-    List<Todo> update(Todo todo){
+
+    @PutMapping
+    public List<Todo> update(@RequestBody Todo todo){
         return todoService.update(todo);
     }
-    List<Todo> delete(Long id){
+
+    @DeleteMapping("{id}")
+    public List<Todo> delete(@PathVariable("id") Long id){
         return todoService.delete(id);
     }
 }
