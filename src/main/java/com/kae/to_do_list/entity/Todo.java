@@ -12,7 +12,7 @@ public class Todo {
     private Long id;
     private String name;
     private String descricao;
-    private Boolean realizado;
+    private boolean realizado;
     private int prioridade;
 
     public Long getId() {
