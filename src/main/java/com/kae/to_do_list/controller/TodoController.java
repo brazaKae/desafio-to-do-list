@@ -3,6 +3,7 @@ package com.kae.to_do_list.controller;
 import com.kae.to_do_list.entity.Todo;
 import com.kae.to_do_list.repository.TodoRepository;
 import com.kae.to_do_list.service.TodoService;
+import jakarta.validation.Valid;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -16,7 +17,7 @@ public class TodoController {
         this.todoService = todoService;
     }
     @PostMapping
-    public List<Todo> create(@RequestBody Todo todo){
+    public List<Todo> create(@RequestBody @Valid Todo todo){
         return todoService.create(todo);
     }
 
